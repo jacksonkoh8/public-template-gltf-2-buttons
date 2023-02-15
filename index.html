@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>final-template-model-sequence</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jacksonkoh8/AR.js@99bda004452549e8a7576b9e7afc26992aa0104e/aframe/build/aframe-ar.js"></script>
+    <script src="gesture-detector.js"></script>
+    <script src="gesture-handler-model-sequence.js"></script>
+    <script src="model-opacity.js"></script>
+    <script src="aframe-extras.loaders.min.js"></script>
+    <script src="sky.js"></script>
+    
+    <script>
+      window.onload = function () {
+        alert("Android users experiencing extreme camera zoom should go to browser setting, accessibility/display/appearance, turn off force enable zoom/manual zoom/control zoom\n\nClick on X on the top right hand to partially hide background\n\nPress the different buttons to show/hide the features in sequence from left to right.");
+      };
+    </script>
+  </head>
+
+  <body> 
+  <div id="skybtn">
+    <button 
+    class="skybtn" 
+    id="skybtn"
+    onclick="skyCTRL()"
+    >X</button>
+  </div>
+    <div id="bottomButtons">
+      <button class="button" id="plane1" onClick="reply_click(this.id)">Plane1</button>
+      <button class="button" id="normal1" onClick="reply_click(this.id)">Normal1</button>
+      <button class="button" id="plane2" onClick="reply_click(this.id)">Plane2</button>
+      <button class="button" id="normal2" onClick="reply_click(this.id)">Normal2</button>
+      <button class="button" id="plane3" onClick="reply_click(this.id)">Plane3</button>
+    </div> 
+    <script src="button-colour-on-off.js"></script>
+    <script>
+    function reply_click(clicked_id) {
+      document.dispatchEvent(new CustomEvent("btnevt", {
+        detail: { type: clicked_id } 
+      }))
+    };</script>
+
+    <a-scene
+      arjs="sourceWidth: 1024; sourceHeight: 776; displayWidth: 1024; displayHeight: 776;"
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      loading-screen="enabled: false"
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/"
+      id="scene"
+    >
+      <a-assets>
+        <a-asset-item id="axes-gltf" src="axes.gltf"></a-asset-item>
+        <a-asset-item id="plane1-gltf" src="plane1.gltf"></a-asset-item>
+        <a-asset-item id="normal1-gltf" src="normal1.gltf"></a-asset-item>
+        <a-asset-item id="plane2-gltf" src="plane2.gltf"></a-asset-item>
+        <a-asset-item id="normal2-gltf" src="normal2.gltf"></a-asset-item>
+        <a-asset-item id="plane3-gltf" src="plane3.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-marker
+        preset="hiro"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+        id="markerA"
+        smooth="true"
+        smoothCount="50"
+        smoothTolerance="0.1"
+        smoothThreshold="1000"
+      >
+        
+        <a-sky 
+          id=sky
+          color="#C0C0C0"
+          opacity="0"
+        >
+        </a-sky>        
+        
+      <a-entity
+        id="axes-model"
+        gltf-model="#axes-gltf"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.05 0.05 0.05"
+        class="clickable"
+        gesture-handler-model-sequence
+        >
+      </a-entity>
+      <a-entity
+        id="plane1-model"
+        gltf-model="#plane1-gltf"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.05 0.05 0.05"
+        class="clickable"
+        visible="false"
+        model-opacity="0.4"
+        gesture-handler-model-sequence
+        >
+      </a-entity>
+      <a-entity
+        id="normal1-model"
+        gltf-model="#normal1-gltf"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.05 0.05 0.05"
+        class="clickable"
+        visible="false"
+        gesture-handler-model-sequence
+        >
+      </a-entity>
+      <a-entity
+        id="plane2-model"
+        gltf-model="#plane2-gltf"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.05 0.05 0.05"
+        class="clickable"
+        visible="false"
+        model-opacity="0.4"
+        gesture-handler-model-sequence
+        >
+      </a-entity>
+      <a-entity
+        id="normal2-model"
+        gltf-model="#normal2-gltf"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.05 0.05 0.05"
+        class="clickable"
+        visible="false"
+        gesture-handler-model-sequence
+        >
+      </a-entity>
+      <a-entity
+        id="plane3-model"
+        gltf-model="#plane3-gltf"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.05 0.05 0.05"
+        class="clickable"
+        visible="false"
+        model-opacity="0.4"
+        gesture-handler-model-sequence
+        >
+      </a-entity>
+
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
