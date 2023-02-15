@@ -51,14 +51,7 @@
       <button class="button" id="Description" onClick="description_text()">Description</button>
       <button class="button" id="NextLocation" onClick="next_location_text()">Next Location</button>
     </div> 
-    <script src="button-colour-on-off.js"></script>
-    <script>
-    function reply_click(clicked_id) {
-      document.dispatchEvent(new CustomEvent("btnevt", {
-        detail: { type: clicked_id } 
-      }))
-    };</script>
-
+    
     <a-scene
       arjs="sourceWidth: 1024; sourceHeight: 776; displayWidth: 1024; displayHeight: 776;"
       embedded
