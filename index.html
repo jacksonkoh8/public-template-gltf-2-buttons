@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>final-template-model-sequence</title>
+    <title>public-template-gltf-2-buttons</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="styles.css">
@@ -9,8 +9,7 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jacksonkoh8/AR.js@99bda004452549e8a7576b9e7afc26992aa0104e/aframe/build/aframe-ar.js"></script>
     <script src="gesture-detector.js"></script>
-    <script src="gesture-handler-model-sequence.js"></script>
-    <script src="model-opacity.js"></script>
+    <script src="gesture-handler.js"></script>
     <script src="aframe-extras.loaders.min.js"></script>
     <script src="sky.js"></script>
     
@@ -28,13 +27,29 @@
     id="skybtn"
     onclick="skyCTRL()"
     >X</button>
+
+  <!-- edit message to be shown when description button is pressed
+  use "\n" without quotes to create new paragraph
+  don't remove the quotes without the brackets of alert -->
+  <script>
+    function description_text() {
+      alert("this is a description\nthis is second para description");
+    }
+  </script>
+  <!-- edit message to be shown when description button is pressed
+  use "\n" without quotes to create new paragraph 
+  don't remove the quotes without the brackets of alert -->
+  <script>
+    function next_location_text() {
+      alert("this is a the next location\nthis is second para location");
+    }
+  </script>
+
   </div>
     <div id="bottomButtons">
-      <button class="button" id="plane1" onClick="reply_click(this.id)">Plane1</button>
-      <button class="button" id="normal1" onClick="reply_click(this.id)">Normal1</button>
-      <button class="button" id="plane2" onClick="reply_click(this.id)">Plane2</button>
-      <button class="button" id="normal2" onClick="reply_click(this.id)">Normal2</button>
-      <button class="button" id="plane3" onClick="reply_click(this.id)">Plane3</button>
+      <!-- change the word just before </button> to change text appearing on button, don't change id-->
+      <button class="button" id="Description" onClick="description_text()">Description</button>
+      <button class="button" id="NextLocation" onClick="next_location_text()">Next Location</button>
     </div> 
     <script src="button-colour-on-off.js"></script>
     <script>
@@ -56,11 +71,6 @@
     >
       <a-assets>
         <a-asset-item id="axes-gltf" src="axes.gltf"></a-asset-item>
-        <a-asset-item id="plane1-gltf" src="plane1.gltf"></a-asset-item>
-        <a-asset-item id="normal1-gltf" src="normal1.gltf"></a-asset-item>
-        <a-asset-item id="plane2-gltf" src="plane2.gltf"></a-asset-item>
-        <a-asset-item id="normal2-gltf" src="normal2.gltf"></a-asset-item>
-        <a-asset-item id="plane3-gltf" src="plane3.gltf"></a-asset-item>
       </a-assets>
 
       <a-marker
@@ -89,65 +99,7 @@
         rotation="0 0 0"
         scale="0.05 0.05 0.05"
         class="clickable"
-        gesture-handler-model-sequence
-        >
-      </a-entity>
-      <a-entity
-        id="plane1-model"
-        gltf-model="#plane1-gltf"
-        position="0 0 0"
-        rotation="0 0 0"
-        scale="0.05 0.05 0.05"
-        class="clickable"
-        visible="false"
-        model-opacity="0.4"
-        gesture-handler-model-sequence
-        >
-      </a-entity>
-      <a-entity
-        id="normal1-model"
-        gltf-model="#normal1-gltf"
-        position="0 0 0"
-        rotation="0 0 0"
-        scale="0.05 0.05 0.05"
-        class="clickable"
-        visible="false"
-        gesture-handler-model-sequence
-        >
-      </a-entity>
-      <a-entity
-        id="plane2-model"
-        gltf-model="#plane2-gltf"
-        position="0 0 0"
-        rotation="0 0 0"
-        scale="0.05 0.05 0.05"
-        class="clickable"
-        visible="false"
-        model-opacity="0.4"
-        gesture-handler-model-sequence
-        >
-      </a-entity>
-      <a-entity
-        id="normal2-model"
-        gltf-model="#normal2-gltf"
-        position="0 0 0"
-        rotation="0 0 0"
-        scale="0.05 0.05 0.05"
-        class="clickable"
-        visible="false"
-        gesture-handler-model-sequence
-        >
-      </a-entity>
-      <a-entity
-        id="plane3-model"
-        gltf-model="#plane3-gltf"
-        position="0 0 0"
-        rotation="0 0 0"
-        scale="0.05 0.05 0.05"
-        class="clickable"
-        visible="false"
-        model-opacity="0.4"
-        gesture-handler-model-sequence
+        gesture-handler
         >
       </a-entity>
 
