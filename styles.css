@@ -15,6 +15,7 @@ body {
   z-index: 20;
 }
 
+/* reduce width if it's too wide for smaller devices, can change properties of the bottons by changing stuff within curly brackets of .button */
 .button {
   padding: 0.25em;
   border-radius: 4px;
@@ -26,18 +27,6 @@ body {
   height: 3em;
   margin-left: 10px;
 }
-/* 
-.active {
-  padding: 0.25em;
-  border-radius: 4px;
-  border: true;
-  border-color: black;
-  background: lime;
-  color: black;
-  width: 15em;
-  height: 3em;
-  margin-left: 10px;
-} */
 
 #plane1 {
   margin-left: 0px;
